@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Premeir Leaques</title>
+        <link rel="stylesheet" href="CSS/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="header">
+            <h2>Premeir Leaques standings - xxxx</h2>
+        </div>
+        <div class="description">
+            <p>Gartner published its report on smartphone sales for the Q3 2018 period. The overall market grew merely 1.4% and reached 389 million units. While Samsung is ahead, Huawei is catching up, and if it weren’t for Chinese brands like Huawei, Xiaomi, and Oppo, the global market would’ve declined by 5.2%, compared with Q3 2017.</p>
+        </div>
+        <div class="filter-section">
+                <h4>Filter</h4>
+            <div class="filter-list">
+                <ul>
+                    <li><input type="radio" name="rdofilter" checked value="TOTAL">Total</li>
+                    <li><input type="radio" name="rdofilter"  value="HOME">Home</li>
+                    <li><input type="radio" name="rdofilter"  value="AWAY">Away</li>
+                    <li><input type="radio" name="rdofilter"  value="4">filter 4</li>
+                    <li><input type="radio" name="rdofilter"  value="5">filter 5</li>
+                </ul>
+            </div>
+            <div class="specialfilter">
+               <span>Liked team : 
+                   <select id="drpLikedteam">                                       
+                   </select>
+               </span>
+               <span>Disliked team : 
+                    <select id="drpDislikedteam">                       
+                    </select>
+               </span>
+               <span>
+                   <input type="button" id="btnApply" value="Apply" disabled>
+                   <input type="button" id="btnReset" value="Reset">
+               </span>
+            </div>
+            <div class="message">
+            </div>
+            <br>
+            <div class="standing-grid">
+                <table id="standingData">
+                 <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Played Games</th>
+                        <th>Won</th>
+                        <th>Draw</th>
+                        <th>Lost</th>
+                        <th>Points</th>
+                    </tr>
+                 </thead>
+                 <tbody>
+                 </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <p style="word-wrap: break-word;">W3Schools is optimized for learning, testing, and training. Examples might be simplified to improve reading and basic understanding. Tutorials, references, and examples are constantly reviewed to avoid errors, but we cannot warrant full correctness of all content. While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. Copyright 1999-2018 by Refsnes Data. All Rights Reserved.
+                    Powered by W3.CSS.
+                    
+                    </p>
+                    <p>Copyright @2018</p>
+        </div>
+        <script type="text/javascript" src="JS/main.js"></script>
+    </body>
+</html>

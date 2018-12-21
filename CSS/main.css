@@ -1,0 +1,73 @@
+body{
+    background-color:cornsilk;
+}
+.header{
+    background-color:dimgray;
+    border-radius: 4px;
+    text-align: center;
+    color: antiquewhite;
+}
+.description{
+    text-align: center;
+    
+}
+.description p{
+    background-color: lightgray;
+    margin: 4px;
+    padding: 20px;
+    border-radius: 7px;
+
+}
+.filter-list ul{
+    list-style-type: none;
+}
+.filter-list ul li{
+    display: inline;
+}
+.filter-section{
+    text-align: center;
+}
+
+.standing-grid{
+    text-align: center;
+}
+
+.standing-grid{
+    padding:20px 100px;  
+}
+
+#standingData{
+    border-collapse: collapse;
+}
+
+table  td,th{
+    border: 1px solid black;
+   
+}
+#standingData th{
+    background-color: green;
+    color: white;
+    height: 40px;  
+}
+table{
+    width: 100%;
+}
+.message{
+    color:red;
+}
+.liked{
+    background-color:lightblue;
+}
+.disliked{
+    background-color:lightcoral;
+}
+.clicked{
+    background-color: lightgreen;
+}
+.footer{
+    padding: 20px;
+    border-radius: 6px;
+    border:1px solid lightgray;
+    background-color: lightslategray;
+    text-align: center;
+}
