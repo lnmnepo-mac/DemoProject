@@ -1,0 +1,73 @@
+name: Checks Example
+
+on: [push]
+
+jobs:
+  example:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Run checks
+      id: run_checks
+      run: |
+        echo "Check 1: Pending" > check-results.txt
+        echo "Check 2: Success" >> check-results.txt
+        echo "Check 3: Failed" >> check-results.txt
+
+    - name: Create check run
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const results = fs.readFileSync('check-results.txt', 'utf-8').split('\\n');
+
+          const output = {
+            title: 'GitHub Checks UI',
+            summary: 'Check results summary',
+            text: `
+              <div class="container">
+                <header class="header">
+                    <h1>GitHub Checks UI</h1>
+                </header>
+                <div class="checks">
+                  ${results.map(result => {
+                    const [checkName, status] = result.split(': ');
+                    const statusClass = status.toLowerCase();
+                    return `
+                      <div class="check-item">
+                          <h2>${checkName}</h2>
+                          <p>Status: <span class="status ${statusClass}">${status}</span></p>
+                          <button class="details-btn">View Details</button>
+                      </div>`;
+                  }).join('')}
+                </div>
+              </div>
+              <style>
+                body { font-family: Arial, sans-serif; background-color: #f6f8fa; margin: 0; padding: 0; }
+                .container { max-width: 800px; margin: 50px auto; padding: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+                .header { text-align: center; margin-bottom: 20px; }
+                .checks { display: flex; flex-direction: column; gap: 20px; }
+                .check-item { padding: 20px; border: 1px solid #e1e4e8; border-radius: 8px; }
+                .check-item h2 { margin: 0 0 10px 0; }
+                .check-item p { margin: 0 0 10px 0; }
+                .status { font-weight: bold; }
+                .status.pending { color: #dbab09; }
+                .status.success { color: #28a745; }
+                .status.failed { color: #d73a49; }
+                .details-btn { background-color: #0366d6; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; }
+                .details-btn:hover { background-color: #0356c1; }
+              </style>
+            `
+          };
+
+          await github.rest.checks.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            name: 'Example Check',
+            head_sha: context.sha,
+            status: 'completed',
+            conclusion: 'success',
+            output
+          });
